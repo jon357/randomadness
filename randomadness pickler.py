@@ -8,13 +8,6 @@ LP=[]
 j=0
 clases=["Assaut du mage de bataille","Assaut du Croisé","Subterfuge de l'archère","Furie du guerrier","Tromperie du mage","Rituel de l'assasin","Négation du sorcier","Frappe du moine","Invocation de Magisfer","Instincts d'éclaireur"]
 modo=['Santosvella','ArchFrost','jon357892','Nexos']
-
-#with open('pseudodcliste','rb') as fichier:
-#	mon_depickler = pickle.Unpickler(fichier)
-#	pseudodiscordliste = mon_depickler.load()
-#with open('pseudoigliste','rb') as fichier:
-#	mon_depickler = pickle.Unpickler(fichier)
-#	pseudoingameliste = mon_depickler.load()
 os.chdir("C:/tests python")
 
 @client.event
@@ -45,11 +38,9 @@ async def on_message(message):
 		with open('pseudodcliste','rb') as fichier:
 			mon_depickler = pickle.Unpickler(fichier)
 			pseudodiscordliste = mon_depickler.load()
-
 		with open('pseudoigliste','rb') as fichier:
 			mon_depickler = pickle.Unpickler(fichier)
 			pseudoingameliste = mon_depickler.load()
-
 		for i in range(len(pseudodiscordliste)):
 			if pseudodiscordliste[i]==message.author.name:
 				pseudoliste=pseudoliste+1
@@ -114,7 +105,7 @@ async def on_message(message):
 						ig1=i1
 						pig1=pig1+1
 				if pig1>=1:
-					pseudig1=pseudoigliste[ig1]
+					pseudig1=pseudoingameliste[ig1]
 				else:
 					pseudig1='non précisé'
 				for i2 in range(len(pseudodiscordliste)):
@@ -122,7 +113,7 @@ async def on_message(message):
 						ig2=i2
 						pig2=pig2+1
 				if pig2>=1:
-					pseudig2=pseudoigliste[ig2]
+					pseudig2=pseudoingameliste[ig2]
 				else:
 					pseudig2='non précisé'
 				dnp="{} [ingame:{}] - {} \n---------------------------VS--------------------------- \n{} [ingame:{}] - {}"
@@ -157,6 +148,14 @@ async def on_ready():
 	print('------')
 	print(pseudodiscordliste)
 	print(pseudoingameliste)
+	
+
+#with open('pseudodcliste','rb') as fichier:
+#	mon_depickler = pickle.Unpickler(fichier)
+#	pseudodiscordliste = mon_depickler.load()
+#with open('pseudoigliste','rb') as fichier:
+#	mon_depickler = pickle.Unpickler(fichier)
+#	pseudoingameliste = mon_depickler.load()
 #client.run('MzgwMTMwMTYyMjI3OTM3Mjgy.DO0Idg.TTH3LMVssf9BC2mncXXOZcXeusc')	#jon test bot
 #client.run('MzgyOTc0NDI1MDA5NDg3ODgz.DPdgSQ.owv2T2CX-xHuip0MhDjUI7R6WZQ')	#test bot priver
 client.run('MzgzNjE5MjIzNzU2MjEwMTc4.DPm45Q.Oy-nKyLUIurYn-wkMZnezBoaeb8')	#santosvallée
