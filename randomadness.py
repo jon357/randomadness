@@ -1,6 +1,5 @@
 import discord
 import pickle
-import os
 from random import choice
 
 client = discord.Client()
@@ -8,7 +7,7 @@ LP=[]
 j=0
 clases=["Assaut du mage de bataille","Assaut du Croisé","Subterfuge de l'archère","Furie du guerrier","Tromperie du mage","Rituel de l'assasin","Négation du sorcier","Frappe du moine","Invocation de Magisfer","Instincts d'éclaireur"]
 modo=['Santosvella','ArchFrost','jon357892','Nexos']
-os.chdir("C:/tests python")
+
 
 @client.event
 async def on_message(message):
@@ -34,7 +33,6 @@ async def on_message(message):
 		pseudoliste=0
 		pseudo=message.author.name
 		pseudoig=message.content.split()
-		os.chdir("C:/tests python")
 		with open('pseudodcliste','rb') as fichier:
 			mon_depickler = pickle.Unpickler(fichier)
 			pseudodiscordliste = mon_depickler.load()
@@ -52,7 +50,6 @@ async def on_message(message):
 		with open('pseudodcliste','wb') as fichier:
 			mon_pickler = pickle.Pickler(fichier)
 			mon_pickler.dump(pseudodiscordliste)
-
 		with open('pseudoigliste','wb') as fichier:
 			mon_pickler = pickle.Pickler(fichier)
 			mon_pickler.dump(pseudoingameliste)
@@ -148,15 +145,15 @@ async def on_ready():
 	print('------')
 	print(pseudodiscordliste)
 	print(pseudoingameliste)
-	
 
+#client.run('MzgwMTMwMTYyMjI3OTM3Mjgy.DO0Idg.TTH3LMVssf9BC2mncXXOZcXeusc')	#jon test bot
+#client.run('MzgyOTc0NDI1MDA5NDg3ODgz.DPdgSQ.owv2T2CX-xHuip0MhDjUI7R6WZQ')	#test bot priver
+client.run('MzgzNjE5MjIzNzU2MjEwMTc4.DPm45Q.Oy-nKyLUIurYn-wkMZnezBoaeb8')	#santosvallée
+#383619223756210178#sheogobot
+#discord.Object(id='383618886806929419')
 #with open('pseudodcliste','rb') as fichier:
 #	mon_depickler = pickle.Unpickler(fichier)
 #	pseudodiscordliste = mon_depickler.load()
 #with open('pseudoigliste','rb') as fichier:
 #	mon_depickler = pickle.Unpickler(fichier)
 #	pseudoingameliste = mon_depickler.load()
-#client.run('MzgwMTMwMTYyMjI3OTM3Mjgy.DO0Idg.TTH3LMVssf9BC2mncXXOZcXeusc')	#jon test bot
-#client.run('MzgyOTc0NDI1MDA5NDg3ODgz.DPdgSQ.owv2T2CX-xHuip0MhDjUI7R6WZQ')	#test bot priver
-client.run('MzgzNjE5MjIzNzU2MjEwMTc4.DPm45Q.Oy-nKyLUIurYn-wkMZnezBoaeb8')	#santosvallée
-#discord.Object(id='383618886806929419')
