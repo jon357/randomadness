@@ -29,6 +29,8 @@ async def on_message(message):
 			else:
 				rl="Randomadness deja lancé tapez !join pour jouer"
 				await client.send_message(discord.Object(id='383618886806929419'),rl.format())
+				
+				
 	if message.content.startswith('!pseudo'):
 		pseudoliste=0
 		pseudo=message.author.name
@@ -53,6 +55,8 @@ async def on_message(message):
 		with open('pseudoigliste','wb') as fichier:
 			mon_pickler = pickle.Pickler(fichier)
 			mon_pickler.dump(pseudoingameliste)
+			
+			
 	if message.content.startswith('!join'):
 		uname=0
 		if j>=1:
@@ -63,14 +67,20 @@ async def on_message(message):
 			if uname==0:
 				LP.append(username)
 				print(username,' a rejoin la liste d attente')
+				
+				
 	if message.content.startswith('!liste'):
 		aliste="Liste des joueurs : {}"
 		await client.send_message(discord.Object(id='383618886806929419'),aliste.format(LP))
+		
+		
 	if message.content.startswith('!unjoin'):
 		if j>=1:
 			username=message.author.name
 			LP.remove(username)
 			print(username,' a quiter la liste d attente')
+			
+			
 	if message.content.startswith('!duel'):
 		with open('pseudodcliste','rb') as fichier:
 			mon_depickler = pickle.Unpickler(fichier)
@@ -115,6 +125,8 @@ async def on_message(message):
 					pseudig2='non précisé'
 				dnp="{} [ingame:{}] - {} \n---------------------------VS--------------------------- \n{} [ingame:{}] - {}"
 				await client.send_message(discord.Object(id='383618886806929419'),dnp.format(J1,pseudig1,C1,J2,pseudig2,C2))
+
+				
 	if message.content.startswith('!stop'):
 		modoac=0
 		username=message.author.name
@@ -126,10 +138,13 @@ async def on_message(message):
 				print('randomadness stoper')
 				del LP[:]
 				j=-1
+				
+				
 	if message.content.startswith('!commandes'):
 		cmd="Voici la liste des commandes que vous pouvez utiliser : \n!pseudo [pseudo ig] pour ajouter votre pseudo ig , \n!randomadness pour lancer le jeu (modo seulement) , \n!join pour vous mettre en liste d'attente , \n!liste pour afficher la liste des participants , \n!unjoin pour vous retirer de la liste d'attente , \n!duel pour tirer au sort un match , \n!stop pour arrêter le jeu (modo seulement) ,\n!commandes pour afficher la liste des commandes ."
 		await client.send_message(discord.Object(id='383618886806929419'),cmd.format())
 
+		
 @client.event
 async def on_ready():
 	with open('pseudodcliste','rb') as fichier:
@@ -139,6 +154,7 @@ async def on_ready():
 		mon_depickler = pickle.Unpickler(fichier)
 		pseudoingameliste = mon_depickler.load()
 
+		
 	print('Logged in as')
 	print(client.user.name)
 	print(client.user.id)
@@ -146,14 +162,4 @@ async def on_ready():
 	print(pseudodiscordliste)
 	print(pseudoingameliste)
 
-#client.run('MzgwMTMwMTYyMjI3OTM3Mjgy.DO0Idg.TTH3LMVssf9BC2mncXXOZcXeusc')	#jon test bot
-#client.run('MzgyOTc0NDI1MDA5NDg3ODgz.DPdgSQ.owv2T2CX-xHuip0MhDjUI7R6WZQ')	#test bot priver
 client.run('MzgzNjE5MjIzNzU2MjEwMTc4.DPm45Q.Oy-nKyLUIurYn-wkMZnezBoaeb8')	#santosvallée
-#383619223756210178#sheogobot
-#discord.Object(id='383618886806929419')
-#with open('pseudodcliste','rb') as fichier:
-#	mon_depickler = pickle.Unpickler(fichier)
-#	pseudodiscordliste = mon_depickler.load()
-#with open('pseudoigliste','rb') as fichier:
-#	mon_depickler = pickle.Unpickler(fichier)
-#	pseudoingameliste = mon_depickler.load()
