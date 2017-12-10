@@ -97,8 +97,7 @@ async def on_message(message):
 				await client.send_message(discord.Object(id='383618886806929419'),mp.format())
 			else:
 				print('duel lancer')
-				R1=choice(LP)
-				J1=R1
+				R1=choice(LP				J1=R1
 				LP.remove(R1)
 				R2=choice(LP)
 				J2=R2
@@ -162,4 +161,4 @@ async def on_ready():
 	print(pseudodiscordliste)
 	print(pseudoingameliste)
 
-client.run('MzgzNjE5MjIzNzU2MjEwMTc4.DPm45Q.Oy-nKyLUIurYn-wkMZnezBoaeb8')	#santosvallée
+client.run('MzgzNjE5MjIzNzU2MjEwMTc4.DPm45Q.Oy-nKyLUIurYn-wkMZnezBoaeb8')
