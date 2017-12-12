@@ -8,6 +8,8 @@ j=0
 clases=["Assaut du mage de bataille","Assaut du Croisé","Subterfuge de l'archère","Furie du guerrier","Tromperie du mage","Rituel de l'assasin","Négation du sorcier","Frappe du moine","Invocation de Magisfer","Instincts d'éclaireur"]
 modo=['Santosvella','ArchFrost','jon357892','Nexos']
 
+token=''
+
 @client.event
 async def on_message(message):
 	
@@ -219,7 +221,7 @@ async def on_ready():
 	with open('pseudoigliste','rb') as fichier:
 		mon_depickler = pickle.Unpickler(fichier)
 		pseudoingameliste = mon_depickler.load()
-	bnj="Bonjour"
+#	bnj="Bonjour"
 #	await client.send_message(discord.Object(id='383618886806929419'),bnj.format())
 	print('Logged in as')
 	print(client.user.name)
@@ -228,4 +230,4 @@ async def on_ready():
 	print(pseudodiscordliste)
 	print(pseudoingameliste)
 	
-client.run('MzgzNjE5MjIzNzU2MjEwMTc4.DPm45Q.Oy-nKyLUIurYn-wkMZnezBoaeb8')	#santosvallée
+client.run(token)
