@@ -27,11 +27,11 @@ async def on_message(message):
 			global j
 			if j==0:
 				rl="Randomadness lancé taper !join pour rejoindre la liste d'attente"
-				await client.send_message(rl.format())
+				await client.send_message(message.channel,rl.format())
 				j=+1
 			else:
 				rl="Randomadness deja lancé tapez !join pour rejoindre la liste d'attente"
-				await client.send_message(rl.format())
+				await client.send_message(message.channel,rl.format())
 	
 
 	if message.content.startswith('!pseudo'):
@@ -74,7 +74,7 @@ async def on_message(message):
 
 	if message.content.startswith('!liste'):
 		aliste="Liste des joueurs : {}"
-		await client.send_message(aliste.format(LP))
+		await client.send_message(message.channel,aliste.format(LP))
 
 
 	if message.content.startswith('!pliste'):
@@ -85,7 +85,7 @@ async def on_message(message):
 			mon_depickler = pickle.Unpickler(fichier)
 			pseudoingameliste = mon_depickler.load()
 		pliste="Voici la liste des pseudo enregistrer : \ndiscord = {} \ningame = {}"
-		await client.send_message(pliste.format(pseudodiscordliste,pseudoingameliste))
+		await client.send_message(message.channel,pliste.format(pseudodiscordliste,pseudoingameliste))
 	
 
 	if message.content.startswith('!unjoin'):
@@ -108,7 +108,7 @@ async def on_message(message):
 				NLP=NLP+1
 			if NLP<=1:
 				mp="Il faut plus de joueurs"
-				await client.send_message(mp.format())
+				await client.send_message(message.channel,mp.format())
 			else:
 				print('duel lancer')
 				R1=choice(LP)
@@ -138,7 +138,7 @@ async def on_message(message):
 				else:
 					pseudig2='non précisé'
 				dnp="{} [ingame:{}] - {} \n---------------------------VS--------------------------- \n{} [ingame:{}] - {}"
-				await client.send_message(dnp.format(J1,pseudig1,C1,J2,pseudig2,C2))
+				await client.send_message(message.channel,dnp.format(J1,pseudig1,C1,J2,pseudig2,C2))
 		
 
 	if message.content.startswith('!duel+'):
@@ -154,7 +154,7 @@ async def on_message(message):
 				NLP=NLP+1
 			if NLP<=1:
 				mp="Il faut plus de joueurs"
-				await client.send_message(mp.format())
+				await client.send_message(message.channel,mp.format())
 			else:
 				if NLP%2==0:
 					NLP=NLP/2
@@ -190,7 +190,7 @@ async def on_message(message):
 					else:
 						pseudig2='non précisé'
 					dnp="{} [ingame:{}] - {} \n---------------------------VS--------------------------- \n{} [ingame:{}] - {}"
-					await client.send_message(dnp.format(J1,pseudig1,C1,J2,pseudig2,C2))
+					await client.send_message(message.channel,dnp.format(J1,pseudig1,C1,J2,pseudig2,C2))
 	
 
 	if message.content.startswith('!stop'):
@@ -208,7 +208,7 @@ async def on_message(message):
 
 	if message.content.startswith('!commandes'):
 		cmd="Voici la liste des commandes que vous pouvez utiliser : \n!pseudo [pseudo ig] pour ajouter votre pseudo ig , \n!randomadness pour lancer le jeu (modo seulement) , \n!join pour vous mettre en liste d'attente , \n!liste pour afficher la liste des participants , \n!pliste affiche la liste des pseudo enregistrer, \n!unjoin pour vous retirer de la liste d'attente , \n!duel pour tirer au sort un match , \n!duel+ pour tirer plusieurs matchs, \n!stop pour arrêter le jeu (modo seulement) ,\n!commandes pour afficher la liste des commandes ."
-		await client.send_message(cmd.format())
+		await client.send_message(message.channel,cmd.format())
 
 
 @client.event
@@ -220,7 +220,7 @@ async def on_ready():
 		mon_depickler = pickle.Unpickler(fichier)
 		pseudoingameliste = mon_depickler.load()
 	bnj="Bonjour"
-	await client.send_message(discord.Object(id='383618886806929419'),bnj.format())
+#	await client.send_message(discord.Object(id='383618886806929419'),bnj.format())
 	print('Logged in as')
 	print(client.user.name)
 	print(client.user.id)
