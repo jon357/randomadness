@@ -18,16 +18,16 @@ async def on_message(message):
 		return
 	
 
-	if message.content.startswith('!randomadness'):
+	if message.content.startswith('!rstart'):
 		modoac=0
 		username=message.author.name
 		for i in range(len(modo)):
 			if username==modo[i]:
 				modoac=+1
 		if modoac>=1:
-			print('randomadness lancé')
 			global j
 			if j==0:
+				print('randomadness lancé')
 				rl="Randomadness lancé taper !join pour rejoindre la liste d'attente"
 				await client.send_message(message.channel,rl.format())
 				j=+1
@@ -97,7 +97,7 @@ async def on_message(message):
 			print(username,' a quiter la liste d attente')
 	
 
-	if message.content.startswith('!duel'):
+	if message.content.startswith('!duel!'):
 		with open('pseudodcliste','rb') as fichier:
 			mon_depickler = pickle.Unpickler(fichier)
 			pseudodiscordliste = mon_depickler.load()
@@ -141,7 +141,7 @@ async def on_message(message):
 					pseudig2='non précisé'
 				dnp="{} [ingame:{}] - {} \n---------------------------VS--------------------------- \n{} [ingame:{}] - {}"
 				await client.send_message(message.channel,dnp.format(J1,pseudig1,C1,J2,pseudig2,C2))
-		
+	
 
 	if message.content.startswith('!duel+'):
 		with open('pseudodcliste','rb') as fichier:
@@ -195,7 +195,7 @@ async def on_message(message):
 					await client.send_message(message.channel,dnp.format(J1,pseudig1,C1,J2,pseudig2,C2))
 	
 
-	if message.content.startswith('!stop'):
+	if message.content.startswith('!rstop'):
 		modoac=0
 		username=message.author.name
 		for i in range(len(modo)):
@@ -205,11 +205,11 @@ async def on_message(message):
 			if j>=1:
 				print('randomadness stoper')
 				del LP[:]
-				j=-1
+				j=j-1
 	
 
 	if message.content.startswith('!commandes'):
-		cmd="Voici la liste des commandes que vous pouvez utiliser : \n!pseudo [pseudo ig] pour ajouter votre pseudo ig , \n!randomadness pour lancer le jeu (modo seulement) , \n!join pour vous mettre en liste d'attente , \n!liste pour afficher la liste des participants , \n!pliste affiche la liste des pseudo enregistrer, \n!unjoin pour vous retirer de la liste d'attente , \n!duel pour tirer au sort un match , \n!duel+ pour tirer plusieurs matchs, \n!stop pour arrêter le jeu (modo seulement) ,\n!commandes pour afficher la liste des commandes ."
+		cmd="Voici la liste des commandes que vous pouvez utiliser : \n!pseudo [pseudo ig] pour ajouter votre pseudo ig , \n!rstart pour lancer le jeu (modo seulement) , \n!join pour vous mettre en liste d'attente , \n!liste pour afficher la liste des participants , \n!pliste affiche la liste des pseudo enregistrer, \n!unjoin pour vous retirer de la liste d'attente , \n!duel! pour tirer au sort un match , \n!duel+ pour tirer plusieurs matchs, \n!rstop pour arrêter le jeu (modo seulement) ,\n!commandes pour afficher la liste des commandes ."
 		await client.send_message(message.channel,cmd.format())
 
 
